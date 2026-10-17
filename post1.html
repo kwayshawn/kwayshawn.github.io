@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runbooks Nobody Reads (and How to Write Ones People Do) | Kwayshawn Dunbar</title>
+<meta name="description" content="Kwayshawn Dunbar, IT Operations Manager in Atlanta, shares a simple runbook format that on-call engineers can actually follow at 3 a.m.">
+<meta name="author" content="Kwayshawn Dunbar">
+<link rel="canonical" href="https://kwayshawn.github.io/post1.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Runbooks Nobody Reads (and How to Write Ones People Do)">
+<meta property="og:description" content="A simple, practical runbook format from IT operations manager Kwayshawn Dunbar.">
+<meta property="og:url" content="https://kwayshawn.github.io/post1.html">
+<meta property="og:site_name" content="Kwayshawn Dunbar">
+<meta property="article:author" content="Kwayshawn Dunbar">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Runbooks Nobody Reads (and How to Write Ones People Do)",
+  "datePublished": "2026-10-17",
+  "author": {
+    "@type": "Person",
+    "name": "Kwayshawn Dunbar",
+    "alternateName": ["Kway Dunbar", "Kwayshawn J. Dunbar"],
+    "jobTitle": "IT Operations Manager",
+    "url": "https://kwayshawn.github.io/",
+    "sameAs": [
+      "https://www.linkedin.com/in/kwayshawn-dunbar-77315577",
+      "https://www.youtube.com/@kwayINC",
+      "https://github.com/kwayshawn",
+      "https://www.instagram.com/kwayjustice",
+      "https://www.threads.net/@kwayjustice"
+    ]
+  },
+  "mainEntityOfPage": "https://kwayshawn.github.io/post1.html"
+}
+</script>
+<style>
+  :root{--bg:#0f1720;--panel:#16212d;--ink:#e8eef4;--muted:#9fb0c0;--accent:#4fb3ff;--line:#243444}
+  @media (prefers-color-scheme: light){:root{--bg:#f6f8fb;--panel:#fff;--ink:#14202b;--muted:#566676;--line:#e2e8ef;--accent:#0a6fc2}}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:18px}
+  a{color:var(--accent)}
+  .wrap{max-width:720px;margin:0 auto;padding:40px 20px 72px}
+  .back{font-size:15px;text-decoration:none}
+  h1{font-size:clamp(30px,5vw,42px);line-height:1.15;margin:18px 0 6px}
+  .meta{color:var(--muted);font-size:15px;margin-bottom:28px}
+  h2{font-size:23px;margin-top:36px}
+  pre{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;overflow-x:auto;font-size:15px;line-height:1.55}
+  .bio{margin-top:48px;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--panel);font-size:16px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">&larr; Kwayshawn Dunbar</a>
+  <article>
+    <h1>Runbooks Nobody Reads (and How to Write Ones People Do)</h1>
+    <div class="meta">By Kwayshawn Dunbar &middot; <time datetime="2026-10-17">October 17, 2026</time> &middot; 4 min read</div>
+
+    <p>Every operations team I've worked around has a folder of runbooks. And almost every team has a moment where someone on call opens one at 3 a.m., scrolls past four paragraphs of history, and closes it to go figure things out on their own.</p>
+    <p>That's not the on-call engineer's fault. It's a writing problem. A runbook is not documentation for documentation's sake; it's a tool for a tired person under pressure. Here's the format I keep coming back to.</p>
+
+    <h2>1. Start with "How do I know this is the problem?"</h2>
+    <p>Put the symptoms first: the alert name, what the dashboard looks like, what users are reporting. If the reader can confirm in 30 seconds that they're in the right place, you've already saved them time.</p>
+
+    <h2>2. Give the first five minutes, in order</h2>
+    <p>Numbered steps. One action per step. Copy-pasteable commands. No "you may want to consider." The goal of the first five minutes is to stabilize or to escalate, not to find root cause.</p>
+
+    <h2>3. Make escalation obvious</h2>
+    <p>Who owns this service? What's the on-call rotation or group to page? At what point should you stop trying and pull someone in? A good runbook gives people <em>permission</em> to escalate, and that alone shortens a lot of incidents.</p>
+
+    <h2>4. Keep the background at the bottom</h2>
+    <p>Architecture notes, history, and "why it works this way" are valuable. They just belong after the steps, for the daytime reader.</p>
+
+    <h2>A simple template</h2>
+<pre>Title: [Service] - [Symptom]
+Owner: [team / on-call group]
+Last reviewed: [date] by [name]
+
+## Is this the problem?
+- Alert: ...
+- What you'll see: ...
+
+## First 5 minutes
+1. ...
+2. ...
+3. If not resolved by step 3, escalate to [group].
+
+## Escalation
+- Primary: ...
+- Secondary: ...
+
+## Verify recovery
+- ...
+
+## Background (read later)
+- ...</pre>
+
+    <h2>5. Review it after every real use</h2>
+    <p>The best time to fix a runbook is right after somebody used it. Add a line to your incident review: "Did the runbook help? What was missing?" Small edits, made consistently, turn a stale folder into something the team trusts.</p>
+
+    <p>Reliability isn't only about tools and architecture. A lot of it is about making the right thing easy to do when people are tired. Good runbooks are one of the cheapest ways to get there.</p>
+  </article>
+
+  <div class="bio">
+    <strong>Kwayshawn Dunbar</strong> (Kway) is an IT Operations Manager at Delta Air Lines in Atlanta and the creator of the <a href="https://www.youtube.com/@kwayINC">KwayINC</a> YouTube channel. Connect on <a href="https://www.linkedin.com/in/kwayshawn-dunbar-77315577">LinkedIn</a> or see more on <a href="https://github.com/kwayshawn">GitHub</a>.
+  </div>
+</div>
+</body>
+</html>
